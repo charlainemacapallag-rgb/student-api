@@ -1,0 +1,23 @@
+// for backend
+
+npm init -y
+npm install express
+npm i nodemon -D
+npm i mongodb
+npm i mongoose
+npm i dotenv
+npm i cors
+npm install swagger-jsdoc --save
+npm install swagger-ui-express
+npm run start
+
+// for frontend
+
+npm create vite@latest .
+npm install
+npm i react-router-dom
+npm i react-hot-toast // notifications
+npm i lucide-react // icons
+npm i bootstrap
+npm install axios // access backend
+npm run dev
