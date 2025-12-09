@@ -17,12 +17,11 @@ app.use(logger);
 
 app.get('/', (req, res) => res.json({ success: true, message: 'Student API' }));
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-      console.log('MongoDB connected');
-      // Mount routes after MongoDB connection
-      app.use('/students', studentRoutes);
-      app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-      app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
+app.use('/students', studentRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+mongoose.connect(process.env.MONGO_URI, { })
+  .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

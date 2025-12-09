@@ -1,20 +1,15 @@
-const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 const options = {
   definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Student API",
-      version: "1.0.0",
-      description: "API documentation for your Student Management System",
-    },
-    servers: [
-      {
-        url: "http://localhost:3000"
-      }
-    ]
+    openapi: '3.0.0',
+    info: { title: 'Student API', version: '1.0.0', description: 'Student API docs' },
+    servers: [{ url: '/' }]
   },
-  apis: ["./routes/*.js"], // Scan all route files
+  apis: ['./routes/*.js']
 };
 
-module.exports = swaggerJsDoc(options);
+const swaggerSpec = swaggerJsDoc(options);
+
+module.exports = { swaggerUi, swaggerSpec };
